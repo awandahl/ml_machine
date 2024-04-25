@@ -13,7 +13,7 @@ Installation instructions for a garbage room ML machine
 - **GPU**: NVIDIA GTX 970
 - **Primary Disk**: 1TB
 - **Additional Disk**: 500GB
-- **RAM 16GB
+- **RAM**: 16GB
 
 #### Initial Ubuntu Installation
 1. **Install Ubuntu** using the live installation media.
