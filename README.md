@@ -64,6 +64,8 @@ Installation instructions for a garbage room ML machine
      ```bash
      sudo reboot
      ```
+Check nvidia is working, install tensorflow and prerequisites:  https://www.tensorflow.org/install/pip    
+
 
 #### Docker Installation and Configuration
 4. **Install Docker and Configure for GPU Support**:
