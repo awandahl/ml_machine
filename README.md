@@ -6,8 +6,6 @@ Installation instructions for a garbage room ML machine
 
 # nbr 1
 
-This setup ensures that each user has access to both a personal home directory and a dedicated space within the `/data` directory for large datasets or project-specific data.
-
 ### Comprehensive System Setup for Machine Learning
 
 #### Hardware Specifications
