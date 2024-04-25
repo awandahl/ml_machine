@@ -9,10 +9,11 @@ Installation instructions for a garbage room ML machine
 ### Comprehensive System Setup for Machine Learning
 
 #### Hardware Specifications
-- **CPU**: 4 GHz
+- **CPU**: Intel(R) Core(TM) i7-6700K CPU @ 4.00GHz
 - **GPU**: NVIDIA GTX 970
 - **Primary Disk**: 1TB
 - **Additional Disk**: 500GB
+- **RAM 
 
 #### Initial Ubuntu Installation
 1. **Install Ubuntu** using the live installation media.
