@@ -1,6 +1,11 @@
 # ml_machine
 Installation instructions for a garbage room ML machine
 
+
+![ml](https://github.com/awandahl/ml_machine/assets/62021989/e980add7-a13b-4d02-a754-a597edd56644)
+
+# nbr 1
+
 This setup ensures that each user has access to both a personal home directory and a dedicated space within the `/data` directory for large datasets or project-specific data.
 
 ### Comprehensive System Setup for Machine Learning
@@ -110,8 +115,7 @@ This setup ensures that each user has access to both a personal home directory a
    - Install Python virtual environment tools and create an environment
 
 
-
-Certainly! Here’s a consolidated recommendation for setting up a system optimized for data science and machine learning, including both host and container environments:
+# nbr 2
 
 ### System Setup for Data Science and Machine Learning
 
@@ -194,4 +198,70 @@ Partition your 1TB disk during the Ubuntu installation process as follows:
 - Provide Dockerfiles and guidance for building containerized Python and R environments.
 - Set up monitoring, backups, and security measures to ensure a robust operational environment.
 
-This setup ensures a versatile and efficient environment for handling a wide range of data science and machine learning projects, leveraging both the power of Docker and the direct use of system resources.
+
+# nbr 3
+
+### System Administrator Instructions
+
+#### **1. Initial System Setup and Partitioning**
+- **Task**: Install Ubuntu and partition the disks.
+- **Details**:
+  - Use the 1TB disk for system and primary data partitions. 
+  - Partition as follows:
+    - **EFI System Partition**: 512 MB for systems with UEFI.
+    - **Root Partition** (`/`): 100 GB for OS and applications.
+    - **Swap Partition**: 32 GB to support memory overflow and hibernation.
+    - **Home Partition** (`/home`): 200 GB for user files and directories.
+    - **Docker and Container Data Partition** (`/containers`): 600 GB for Docker images and container data.
+  - Format the additional 500GB disk and mount it as `/data` for user data and large datasets.
+- **Importance**: Proper partitioning ensures organized data management and optimizes performance. Each partition serves a specific purpose, enhancing security and system efficiency.
+
+#### **2. NVIDIA GPU and CUDA Setup**
+- **Task**: Install NVIDIA drivers and the CUDA toolkit.
+- **Details**:
+  - Add the proprietary graphics drivers PPA, install the drivers, and the CUDA toolkit.
+  - This setup enables the system to support machine learning and other GPU-accelerated applications.
+- **Importance**: The GPU is crucial for accelerating machine learning tasks. Installing the latest drivers and CUDA toolkit ensures compatibility and optimal performance.
+
+#### **3. Docker Installation and Configuration**
+- **Task**: Install Docker and configure it to use the NVIDIA runtime and the `/containers` partition.
+- **Details**:
+  - Install Docker and `nvidia-docker2` to allow Docker containers to access the GPU.
+  - Modify Docker's configuration to change its default data directory to `/containers`.
+- **Importance**: Docker allows for the creation of isolated environments for different projects, ensuring reproducibility and scalability. Using the `/containers` partition helps manage storage efficiently.
+
+#### **4. User Management**
+- **Task**: Create user accounts, groups, and assign permissions.
+- **Details**:
+  - Set up groups such as `dockerusers` and `datascientists`.
+  - Create user directories under `/data` for each user, ensuring appropriate ownership and permissions.
+- **Importance**: Managing user access through groups ensures that permissions are easily controlled and secure. Providing individual data directories under `/data` allows personalized space for large data without cluttering the home directory.
+
+### End-User Instructions
+
+#### **1. Setting Up Python and R Environments**
+- **Task**: Create Python virtual environments and R environments using `renv`.
+- **Details**:
+  - **Python**: Users should create a virtual environment in their personal or data directory to manage Python packages independently of system-wide installations.
+    ```bash
+    python3 -m venv ~/myenv
+    source ~/myenv/bin/activate
+    ```
+  - **R**: Set up `renv` in project directories to manage R package dependencies locally.
+    ```R
+    install.packages("renv")
+    renv::init()
+    ```
+- **Importance**: Virtual environments in Python and `renv` in R allow users to maintain project-specific dependencies, avoiding conflicts and ensuring reproducibility of the code.
+
+#### **2. Using Jupyter and RStudio**
+- **Task**: Run Jupyter Notebooks and RStudio for interactive development.
+- **Details**:
+  - **Jupyter**: Start Jupyter from within a virtual environment to access notebooks using the installed packages.
+    ```bash
+    jupyter notebook
+    ```
+  - **RStudio**: Launch RStudio from the desktop environment or connect to RStudio Server using a web browser.
+- **Importance**: Jupyter and RStudio provide powerful interfaces for data analysis and development. They support interactive coding, visualization, and collaboration.
+
+These detailed instructions ensure that both system administrators and users are equipped to utilize the system effectively, with clear guidelines on setting up and using the environment for machine learning and data science tasks.
