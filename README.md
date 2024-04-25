@@ -2,6 +2,8 @@
 Installation instructions for a garbage room ML machine
 
 
+https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&Distribution=Ubuntu&target_version=22.04&target_type=deb_network
+
 ![ml](https://github.com/awandahl/ml_machine/assets/62021989/e980add7-a13b-4d02-a754-a597edd56644)
 
 # nbr 1
