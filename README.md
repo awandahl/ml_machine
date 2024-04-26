@@ -58,6 +58,10 @@ https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&D
 
 # sudo ubuntu-drivers install --gpgpu    
 # https://developer.nvidia.com/cuda-11-5-0-download-archive?target_os=Linux&target_arch=x86_64&Distribution=Ubuntu&target_version=20.04&target_type=deb_local   
+# aw@gnaget:~$ sudo apt install nvidia-cuda-toolkit  
+export PATH=/usr/lib/nvidia-cuda-toolkit/bin:$PATH  
+export LD_LIBRARY_PATH=/usr/lib/nvidia-cuda-toolkit/lib64:$LD_LIBRARY_PATH  
+export CUDA_HOME=/usr/lib/nvidia-cuda-toolkit  
 
 
 
