@@ -55,6 +55,12 @@ https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&D
 
 #### NVIDIA GPU and CUDA Setup
 3. **Install NVIDIA Drivers and CUDA**:
+
+# sudo ubuntu-drivers install --gpgpu    
+# https://developer.nvidia.com/cuda-11-5-0-download-archive?target_os=Linux&target_arch=x86_64&Distribution=Ubuntu&target_version=20.04&target_type=deb_local   
+
+
+
    - Install the proprietary NVIDIA drivers and CUDA toolkit for GPU acceleration:
      ```bash
      sudo add-apt-repository ppa:graphics-drivers/ppa
