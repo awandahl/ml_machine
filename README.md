@@ -56,7 +56,9 @@ https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&D
 #### NVIDIA GPU and CUDA Setup
 3. **Install NVIDIA Drivers and CUDA**:
 
-# sudo ubuntu-drivers install --gpgpu    
+# sudo ubuntu-drivers install --gpgpu 
+sudo apt install nvidia-driver-550
+
 # https://developer.nvidia.com/cuda-11-5-0-download-archive?target_os=Linux&target_arch=x86_64&Distribution=Ubuntu&target_version=20.04&target_type=deb_local   
 # aw@gnaget:~$ sudo apt install nvidia-cuda-toolkit  
 export PATH=/usr/lib/nvidia-cuda-toolkit/bin:$PATH  
