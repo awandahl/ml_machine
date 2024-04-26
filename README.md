@@ -12,7 +12,7 @@ https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&D
 
 #### Hardware Specifications
 - **CPU**: Intel(R) Core(TM) i7-6700K CPU @ 4.00GHz
-- **GPU**: NVIDIA GTX 970
+- **GPU**: NVIDIA GTX 560
 - **Primary Disk**: 1TB
 - **Additional Disk**: 500GB
 - **RAM**: 16GB
