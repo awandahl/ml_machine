@@ -308,4 +308,71 @@ then
   - **RStudio**: Launch RStudio from the desktop environment or connect to RStudio Server using a web browser.
 - **Importance**: Jupyter and RStudio provide powerful interfaces for data analysis and development. They support interactive coding, visualization, and collaboration.
 
+
+Step 2: Create the Dockerfile
+
+    Create a new folder on your computer where you will store the Dockerfile and any other related files. For example, create a folder named rstudio-docker.
+
+    Open a text editor (such as Notepad, VSCode, or any other editor of your choice).
+
+    Paste the following contents into the editor. This is your Dockerfile, which tells Docker how to build your container:
+
+    Dockerfile
+
+    # Base image with R and RStudio Server
+    FROM rocker/rstudio:latest
+
+    # Install R packages for text mining
+    RUN install2.r --error \
+        tm \
+        text2vec \
+        tidytext \
+        wordcloud \
+        ggplot2 \
+        dplyr
+
+    # Expose RStudio Server port
+    EXPOSE 8787
+
+    # Set user password for RStudio
+    ENV PASSWORD=your_password_here
+
+    Save the file as Dockerfile in the rstudio-docker folder you created.
+
+Step 3: Build the Docker Image
+
+    Open a terminal (Command Prompt or PowerShell on Windows, Terminal on macOS or Linux).
+    Navigate to the directory containing your Dockerfile. For example:
+
+    bash
+
+cd path/to/rstudio-docker
+
+Replace path/to/rstudio-docker with the actual path where your Dockerfile is saved.
+Run the following command to build your Docker image:
+
+bash
+
+    docker build -t rstudio-textmining .
+
+    This command tells Docker to build an image named rstudio-textmining from the Dockerfile in the current directory (.).
+
+Step 4: Run the Docker Container
+
+Once the image is built, you can run it:
+
+    Execute the following command in your terminal:
+
+    bash
+
+    docker run -d -p 8787:8787 -e PASSWORD=your_password_here rstudio-textmining
+
+    This starts a container in detached mode (-d), maps port 8787 from the container to port 8787 on your host machine (-p 8787:8787), and sets the environment variable PASSWORD to the password you choose (-e PASSWORD=your_password_here). Replace your_password_here with a strong password of your choice.
+
+Step 5: Access RStudio
+
+    Open a web browser and navigate to http://localhost:8787.
+    Log in to RStudio using:
+        Username: rstudio
+        Password: The password you set in the Docker run command.
 These detailed instructions ensure that both system administrators and users are equipped to utilize the system effectively, with clear guidelines on setting up and using the environment for machine learning and data science tasks.
