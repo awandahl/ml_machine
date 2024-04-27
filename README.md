@@ -214,6 +214,35 @@ Partition your 1TB disk during the Ubuntu installation process as follows:
 - Set up monitoring, backups, and security measures to ensure a robust operational environment.
 
 
+### Getting the OpenAlex snapshot:
+
+Read: https://docs.openalex.org/download-all-data/download-to-your-machine  
+
+AWS S3 Explorer:  https://openalex.s3.amazonaws.com/browse.html   
+
+Install AWS client
+````
+sudo apt install awscli
+````
+About 300Gb which takes approximately three hours to download.
+
+````
+aws s3 sync "s3://openalex" "openalex-snapshot" --no-sign-request
+````
+
+
+### Open a new db
+
+First get the DuckDB binary:  
+````
+wget https://github.com/duckdb/duckdb/releases/download/v0.10.1/duckdb_cli-linux-amd64.zip
+````
+then
+
+````
+./duckdb open_alex_test.duckdb
+````
+
 # nbr 3
 
 ### System Administrator Instructions
