@@ -376,3 +376,8 @@ Step 5: Access RStudio
         Username: rstudio
         Password: The password you set in the Docker run command.
 These detailed instructions ensure that both system administrators and users are equipped to utilize the system effectively, with clear guidelines on setting up and using the environment for machine learning and data science tasks.
+
+
+https://hub.docker.com/r/okwrtdsh/anaconda3
+
+
