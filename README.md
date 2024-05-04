@@ -380,4 +380,5 @@ These detailed instructions ensure that both system administrators and users are
 
 https://hub.docker.com/r/okwrtdsh/anaconda3
 
-https://github.com/xychelsea/anaconda3-docker
+https://github.com/xychelsea/anaconda3-docker  
+docker exec -it <container-name-or-id> bash    
