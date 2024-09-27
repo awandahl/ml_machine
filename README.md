@@ -1,3 +1,5 @@
+bcdedit /set {bootmgr} path \EFI\ubuntu\grubx64.efi
+
 # ml_machine
 Installation instructions for a garbage room ML machine
 
