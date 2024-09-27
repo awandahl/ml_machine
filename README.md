@@ -1,3 +1,20 @@
+Boot successfully repaired.  
+
+Please write on a paper the following URL:  
+https://paste.ubuntu.com/p/Kjjt5kVZSV/  
+
+
+In case you still experience boot problem, indicate this URL to:  
+boot.repair@gmail.com or to your favorite support forum.  
+
+You can now reboot your computer.  
+Please do not forget to make your UEFI firmware boot on the The OS now in use - Ubuntu 24.04.1 LTS entry (sda1/efi/ubuntu/grubx64.efi file) !  
+If your computer reboots directly into Windows, try to change the boot order in your UEFI firmware.  
+If your UEFI firmware does not allow to change the boot order, change the default boot entry of the Windows bootloader.  
+For example you can boot into Windows, then type the following command in an admin command prompt:  
+bcdedit /set {bootmgr} path \EFI\ubuntu\grubx64.efi  
+
+
 bcdedit /set {bootmgr} path \EFI\ubuntu\grubx64.efi
 
 # ml_machine
