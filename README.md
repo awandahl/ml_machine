@@ -401,3 +401,101 @@ https://hub.docker.com/r/okwrtdsh/anaconda3
 
 https://github.com/xychelsea/anaconda3-docker  
 docker exec -it <container-name-or-id> bash    
+
+## SDG
+
+
+    Create a Dockerfile based on nvidia/cuda:11.0-base-ubuntu20.04
+    Download and include the model from Zenodo
+    Install R and necessary R packages
+    Install the Aurora SDG API
+    Set up an entry point to run the API
+
+Here's a step-by-step guide:
+
+    Create a Dockerfile:
+
+text
+FROM nvidia/cuda:11.0-base-ubuntu20.04
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    r-base \
+    r-base-dev \
+    libcurl4-openssl-dev \
+    libssl-dev \
+    libxml2-dev \
+    wget \
+    python3 \
+    python3-pip \
+    && rm -rf /var/lib/apt/lists/*
+
+# Download the model from Zenodo
+RUN wget https://zenodo.org/record/7304547/files/sdg_classifier_model.h5 -O /app/sdg_classifier_model.h5
+
+# Install R packages
+RUN R -e "install.packages(c('plumber', 'reticulate', 'keras', 'tensorflow'), repos='http://cran.rstudio.com/')"
+
+# Install Python dependencies
+RUN pip3 install tensorflow==2.4.0 h5py
+
+# Copy the API code (assuming you have the R scripts locally)
+COPY api.R /app/api.R
+
+# Set the working directory
+WORKDIR /app
+
+# Expose the port your API will run on
+EXPOSE 8000
+
+# Start the API
+CMD ["R", "-e", "library(plumber); pr <- plumb('api.R'); pr$run(host='0.0.0.0', port=8000)"]
+
+    Create the api.R file:
+
+You'll need to create an R script that implements the Aurora SDG API. Here's a basic structure:
+
+r
+library(plumber)
+library(keras)
+library(tensorflow)
+
+# Load the model
+model <- load_model_hdf5("sdg_classifier_model.h5")
+
+#* @apiTitle Aurora SDG Classifier API
+
+#* Classify text into SDGs
+#* @param text The text to classify
+#* @post /classify
+function(text) {
+  # Preprocess the text (you may need to implement this based on how the model expects input)
+  preprocessed_text <- preprocess_text(text)
+  
+  # Make prediction
+  prediction <- predict(model, preprocessed_text)
+  
+  # Process the prediction (you may need to implement this based on how the model outputs results)
+  result <- process_prediction(prediction)
+  
+  return(result)
+}
+
+# You'll need to implement these functions based on the specific requirements of your model
+preprocess_text <- function(text) {
+  # Implement text preprocessing
+}
+
+process_prediction <- function(prediction) {
+  # Implement prediction processing
+}
+
+    Build the Docker image:
+
+text
+docker build -t sdg-classifier .
+
+    Run the container:
+
+text
+docker run --gpus all -p 8000:8000 sdg-classifier
