@@ -499,3 +499,13 @@ docker build -t sdg-classifier .
 
 text
 docker run --gpus all -p 8000:8000 sdg-classifier
+
+
+
+
+
+Modellen:  https://zenodo.org/records/5918475
+
+Har du provat med "docker pull ghcr.io/rocker-org/ml-verse:4.4.1"? Det är ju denna basimage som kontarion utökar. Se https://rocker-project.org/images/versioned/cuda.html och där det nämns "nvidia-docker" så är det numera detta som gäller: https://github.com/NVIDIA/nvidia-container-toolkit?tab=readme-ov-file#getting-started
+
+
